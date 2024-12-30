@@ -2,11 +2,6 @@ const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 const path = require('path');
 
-/**
- * Converte um arquivo AAC para MP3.
- * @param {string} inputPath - Caminho do arquivo de entrada (AAC).
- * @param {string} outputPath - Caminho do arquivo de saída (MP3).
- */
 function convertAacToMp3(inputPath, outputPath) {
   return new Promise((resolve, reject) => {
     ffmpeg(inputPath)
@@ -29,11 +24,6 @@ function convertAacToMp3(inputPath, outputPath) {
   });
 }
 
-/**
- * Converte todos os arquivos AAC em um diretório para MP3.
- * @param {string} inputDir - Diretório contendo os arquivos AAC.
- * @param {string} outputDir - Diretório para salvar os arquivos MP3.
- */
 async function convertAllAacToMp3(inputDir, outputDir) {
   try {
     const files = fs.readdirSync(inputDir).filter((file) => file.endsWith('.aac'));
@@ -58,9 +48,7 @@ async function convertAllAacToMp3(inputDir, outputDir) {
   }
 }
 
-// Diretórios de entrada e saída
-const inputDirectory = 'C:/dev/aac_to_mp3_converter/acc_input';
+const inputDirectory = 'C:/dev/aac_to_mp3_converter/aac_input';
 const outputDirectory = 'C:/dev/aac_to_mp3_converter/mp3_output';
 
-// Iniciar a conversão
 convertAllAacToMp3(inputDirectory, outputDirectory);
